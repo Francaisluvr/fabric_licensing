@@ -1,1 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Southpaw Handmade | Calm Minimal Floral Fabric Design</title>
 
+  <style>
+    :root {
+      --cream: #fef9f3;
+      --mint: #a8e6cf;
+      --blush: #ffd3d9;
+      --lavender: #e8d5ff;
+      --sky: #b8e6ff;
+      --gray: #6b7280;
+      --deep: #6b46c1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background-color: var(--cream);
+      color: #2f2f2f;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--deep);
+      text-decoration: none;
+    }
+
+    /* Hero Header Section */
+    .hero {
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background-color: var(--cream);
+    }
+
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 4rem 1.5rem;
+      max-width: 900px;
+    }
+
+    .logo-container {
+      margin-bottom: 2rem;
+    }
+
+    .logo {
+      max-width: 300px;
+      height: auto;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+    }
+
+    /* Logo placeholder styling */
+    .logo-placeholder {
+      display: inline-block;
+      padding: 2rem 3rem;
+      background: white;
+      border-radius: 16px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--deep);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--gray);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 400px;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .logo {
+        max-width: 220px;
+      }
+
+      .logo-placeholder {
+        font-size: 1.2rem;
+        padding: 1.5rem 2rem;
+      }
+    }
+
+    /* Floating Thread Spool Animation */
+    .floating-spool {
+      position: fixed;
+      width: 80px;
+      height: 80px;
+      opacity: 0.5;
+      z-index: 1;
+      pointer-events: none;
+      animation: float 25s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      25% {
+        transform: translate(calc(100vw - 100px), 30vh) rotate(90deg);
+      }
+      50% {
+        transform: translate(calc(100vw - 150px), 60vh) rotate(180deg);
+      }
+      75% {
+        transform: translate(50px, 80vh) rotate(270deg);
+      }
+      100% {
+        transform: translate(0, 0) rotate(360deg);
+      }
+    }
+
+    /* Hide on mobile to reduce distraction */
+    @media (max-width: 768px) {
+      .floating-spool {
+        display: none;
+      }
+    }
+
+    section {
+      padding: 3rem 1.5rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--deep);
+      margin-bottom: 1rem;
+    }
+
+    section > p {
+      font-size: 1.05rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background-color: var(--mint);
+      margin-bottom: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .card {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 211, 217, 0.3),
+        rgba(232, 213, 255, 0.3),
+        rgba(184, 230, 255, 0.3)
+      );
+      border-radius: 16px;
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(107, 70, 193, 0.1);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: var(--deep);
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      line-height: 1.7;
+    }
+
+    .soft-bg {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 211, 217, 0.5),
+        rgba(232, 213, 255, 0.5),
+        rgba(184, 230, 255, 0.5)
+      );
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      margin: 4rem auto;
+      max-width: 1200px;
+    }
+
+    .soft-bg h2 {
+      margin-top: 0;
+      color: var(--deep);
+      font-size: 2rem;
+    }
+
+    .soft-bg p, .soft-bg ul {
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .soft-bg ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    button {
+      background-color: var(--deep);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 0.85rem 2rem;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(107, 70, 193, 0.2);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(107, 70, 193, 0.3);
+    }
+
+    #contact {
+      text-align: center;
+      padding: 4rem 1.5rem;
+    }
+
+    #contact h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    #contact p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    #contact a {
+      font-weight: 500;
+      font-size: 1.15rem;
+    }
+
+    #contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* Portfolio Gallery Styles */
+    .collection {
+      margin-bottom: 4rem;
+    }
+
+    .collection-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .collection-header h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .collection-header p {
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .pattern-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    .pattern-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background: white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pattern-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .pattern-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .pattern-image {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .pattern-info {
+      padding: 1rem;
+    }
+
+    .pattern-name {
+      font-weight: 600;
+      margin: 0 0 0.25rem 0;
+      font-size: 1rem;
+    }
+
+    .pattern-description {
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin: 0;
+    }
+
+    .view-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--deep);
+      font-weight: 500;
+    }
+
+    .view-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Placeholder for empty patterns */
+    .pattern-placeholder {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, rgba(168, 230, 207, 0.3), rgba(232, 213, 255, 0.3));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Floating Thread Spool Animation -->
+  <svg class="floating-spool" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <!-- Thread spool design -->
+    <defs>
+      <linearGradient id="threadGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#a8e6cf;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#6b46c1;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    
+    <!-- Spool body -->
+    <ellipse cx="50" cy="30" rx="25" ry="8" fill="#d4a574"/>
+    <rect x="25" y="30" width="50" height="40" fill="url(#threadGradient)"/>
+    <ellipse cx="50" cy="70" rx="25" ry="8" fill="#d4a574"/>
+    
+    <!-- Thread wrapped around spool -->
+    <path d="M 28 35 Q 50 33 72 35" stroke="#ffd3d9" stroke-width="2" fill="none"/>
+    <path d="M 28 40 Q 50 38 72 40" stroke="#e8d5ff" stroke-width="2" fill="none"/>
+    <path d="M 28 45 Q 50 43 72 45" stroke="#b8e6ff" stroke-width="2" fill="none"/>
+    <path d="M 28 50 Q 50 48 72 50" stroke="#ffd3d9" stroke-width="2" fill="none"/>
+    <path d="M 28 55 Q 50 53 72 55" stroke="#e8d5ff" stroke-width="2" fill="none"/>
+    <path d="M 28 60 Q 50 58 72 60" stroke="#b8e6ff" stroke-width="2" fill="none"/>
+    <path d="M 28 65 Q 50 63 72 65" stroke="#ffd3d9" stroke-width="2" fill="none"/>
+    
+    <!-- Thread hanging -->
+    <path d="M 50 70 Q 45 85 40 95" stroke="#a8e6cf" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </svg>
+
+  <!-- HERO HEADER -->
+  <header class="hero">
+    <!-- Header Background Image - Replace with your styled photo of fabric/tea towels/home decor -->
+    <img 
+      src="YOUR-HEADER-IMAGE-URL" 
+      alt="Southpaw Handmade fabric designs" 
+      class="hero-image"
+      style="display: none;" 
+    />
+    <!-- Remove style="display: none;" once you add your image URL above -->
+
+    <div class="hero-content">
+      <!-- Logo - Replace placeholder with your actual logo -->
+      <div class="logo-container">
+        <!-- OPTION 1: If you have a logo image file -->
+        <!-- <img src="YOUR-LOGO-URL" alt="Southpaw Handmade" class="logo"> -->
+        
+        <!-- OPTION 2: Placeholder until you add your logo -->
+        <div class="logo-placeholder">Southpaw Handmade</div>
+      </div>
+
+      <h1>I design calm, minimal patterns that make handmade projects feel intentional.</h1>
+      <p>
+        Thoughtful fabric patterns created for bag linings, home accents, and
+        handmade goods that deserve quiet beauty and clarity.
+      </p>
+    </div>
+  </header>
+
+  <section>
+    <div class="grid">
+      <div class="card">
+        <h3>Your Projects Deserve Better</h3>
+        <p>
+          When fabric competes for attention instead of supporting your design,
+          even the most thoughtful handmade pieces can feel chaotic or overwhelming.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Minimalist Patterns Matter More Than You Think</h3>
+        <p>
+          Minimalist designs give the eye a place to rest. They invite curiosity instead of demanding attention. They create a sense of calm that people instinctively trust.
+That is why minimalist patterns are so often described as elevated, modern, and timeless.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Create With Confidence</h3>
+        <p>
+          Your bags, accessories, and home goods will feel intentional, elevated, and
+          quietly confident—exactly as you imagined them.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO SECTION -->
+  <section id="portfolio">
+    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 3rem;">Pattern Collections</h2>
+
+    <!-- Collection: When the Garden Wakes -->
+    <div class="collection">
+      <div class="collection-header">
+        <h3>When the Garden Wakes</h3>
+        <p>A minimalist spring collection inspired by the first flowers of the season — daffodil, tulip, hyacinth, snowdrop, violet, and forsythia. Patterns inspired by hope and new beginnings.</p>
+      </div>
+      
+      <div class="pattern-grid">
+        <!-- Pattern 1 - TEMPLATE -->
+        <div class="pattern-item">
+          <a href="https://www.spoonflower.com/profiles/YOUR-USERNAME" target="_blank" rel="noopener" class="pattern-link">
+            <div class="pattern-placeholder">
+              Add your pattern image here<br>
+              <small>Replace with actual image URL</small>
+            </div>
+            <div class="pattern-info">
+              <h4 class="pattern-name">Herald of Spring</h4>
+              <p class="pattern-description">Gentle line-drawn daffodils on cream</p>
+              <span class="view-link">View on Spoonflower →</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Pattern 2 - TEMPLATE -->
+        <div class="pattern-item">
+          <a href="https://www.spoonflower.com/profiles/southpawhandmade" target="_blank" rel="noopener" class="pattern-link">
+            <div class="pattern-placeholder">
+              Add your pattern image here<br>
+              <small>Replace with actual image URL</small>
+            </div>
+            <div class="pattern-info">
+              <h4 class="pattern-name">Tulip Whispers</h4>
+              <p class="pattern-description">Minimal lilac tulip silhouettes in soft cream</p>
+              <span class="view-link">View on Spoonflower →</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Pattern 3 - TEMPLATE -->
+        <div class="pattern-item">
+          <a href="https://www.spoonflower.com/profiles/southpawhandmade" target="_blank" rel="noopener" class="pattern-link">
+            <div class="pattern-placeholder">
+              Add your pattern image here<br>
+              <small>Replace with actual image URL</small>
+            </div>
+            <div class="pattern-info">
+              <h4 class="pattern-name">Awaiting Spring</h4>
+              <p class="pattern-description">Delicate hyacinth blooms on cream background.</p>
+              <span class="view-link">View on Spoonflower →</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Pattern 4 - TEMPLATE -->
+        <div class="pattern-item">
+          <a href="https://www.spoonflower.com/profiles/southpawhandmade" target="_blank" rel="noopener" class="pattern-link">
+            <div class="pattern-placeholder">
+              Add your pattern image here<br>
+              <small>Replace with actual image URL</small>
+            </div>
+            <div class="pattern-info">
+              <h4 class="pattern-name">Winters Goodbye</h4>
+              <p class="pattern-description">Simple snowdrop stems on pale cream</p>
+              <span class="view-link">View on Spoonflower →</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Pattern 5 - TEMPLATE -->
+        <div class="pattern-item">
+          <a href="https://www.spoonflower.com/profiles/southpawhandmade" target="_blank" rel="noopener" class="pattern-link">
+            <div class="pattern-placeholder">
+              Add your pattern image here<br>
+              <small>Replace with actual image URL</small>
+            </div>
+            <div class="pattern-info">
+              <h4 class="pattern-name">Gentle Violets</h4>
+              <p class="pattern-description">Scattered hand drawn violets on creamy background.</p>
+              <span class="view-link">View on Spoonflower →</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Pattern 6 - TEMPLATE -->
+        <div class="pattern-item">
+          <a href="https://www.spoonflower.com/profiles/southpawhandmade" target="_blank" rel="noopener" class="pattern-link">
+            <div class="pattern-placeholder">
+              Add your pattern image here<br>
+              <small>Replace with actual image URL</small>
+            </div>
+            <div class="pattern-info">
+              <h4 class="pattern-name">Golden Promise</h4>
+              <p class="pattern-description">Golden yellow forsythia branches on cream</p>
+              <span class="view-link">View on Spoonflower →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collection 2 - TEMPLATE FOR FUTURE COLLECTIONS -->
+    <div class="collection">
+      <div class="collection-header">
+        <h3>Summer Collection Name</h3>
+        <p>Description of your summer collection goes here. Share the inspiration and story behind these patterns.</p>
+      </div>
+      
+      <div class="pattern-grid">
+        <!-- Add 4-6 pattern items here following the same structure -->
+        <div class="pattern-item">
+          <a href="https://www.spoonflower.com/profiles/southpawhandmade" target="_blank" rel="noopener" class="pattern-link">
+            <div class="pattern-placeholder">
+              Summer Pattern 1<br>
+              <small>Coming Soon</small>
+            </div>
+            <div class="pattern-info">
+              <h4 class="pattern-name">Pattern Name</h4>
+              <p class="pattern-description">Brief description</p>
+              <span class="view-link">View on Spoonflower →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collection 3 - TEMPLATE FOR FUTURE COLLECTIONS -->
+    <div class="collection">
+      <div class="collection-header">
+        <h3>Autumn Collection Name</h3>
+        <p>Description of your autumn collection goes here.</p>
+      </div>
+      
+      <div class="pattern-grid">
+        <div class="pattern-item">
+          <a href="https://www.spoonflower.com/profiles/YOUR-USERNAME" target="_blank" rel="noopener" class="pattern-link">
+            <div class="pattern-placeholder">
+              Autumn Pattern 1<br>
+              <small>Coming Soon</small>
+            </div>
+            <div class="pattern-info">
+              <h4 class="pattern-name">Pattern Name</h4>
+              <p class="pattern-description">Brief description</p>
+              <span class="view-link">View on Spoonflower →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="soft-bg">
+    <h2>Designed With Makers in Mind</h2>
+    <p>
+      My patterns are created specifically to support the maker — not overpower
+      the project.
+    </p>
+
+    <ul>
+      <li>Ideal for bag linings and interior pockets</li>
+      <li>Beautiful for tea towels, pillows, and table linens</li>
+      <li>Low-volume designs that pair well with bold exteriors</li>
+      <li>Seasonal collections built for licensing and retail</li>
+    </ul>
+  </section>
+
+  <section class="soft-bg">
+    <h2>Licensing & Collaboration</h2>
+    <p>
+      I partner with brands, kit makers, and product companies looking for
+      intentional, story-driven surface design.
+    </p>
+
+    <p>
+      My work is well suited for:
+    </p>
+
+    <ul>
+      <li>Bag kits and sewing subscriptions</li>
+      <li>Home textiles and kitchen linens</li>
+      <li>Stationery and paper goods</li>
+      <li>Seasonal retail collections</li>
+    </ul>
+
+    <button onclick="scrollToContact()">Get in Touch</button>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      Interested in licensing, collaboration, or learning more about my
+      collections?
+    </p>
+    <p>
+      Email: <a href="/cdn-cgi/l/email-protection#6c04090000032c1f031918041c0d1b040d0208010d0809420f0301"><span class="__cf_email__" data-cfemail="d4bcb1b8b8bb94a7bba1a0bca4b5a3bcb5bab0b9b5b0b1fab7bbb9">[email&#160;protected]</span></a>
+    </p>
+  </section>
+
+  <footer>
+    © Southpaw Handmade — Curious Hands. Creative Heart. 
+  </footer>
+
+  <script
