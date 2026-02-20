@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blossom and Blade — Southpaw Handmade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Syne:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F8F4EE;
+  --parchment: #EDE4D4;
+  --warm-tan: #D8C8A8;
+  --earth: #B09070;
+  --clay: #9A7050;
+  --deep-brown: #6A4830;
+  --olive: #7A8860;
+  --forest: #4A6040;
+  --sage-grey: #9AA89A;
+  --blush: #D8B0A0;
+  --dusky-pink: #C08878;
+  --charcoal: #281E18;
+  --ink: #141008;
+  --warm-grey: #887060;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Syne', sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--font-body); background:var(--cream); color:var(--charcoal); line-height:1.6; overflow-x:hidden; }
+body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:0.025; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+header { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:1.1rem 3rem; background:rgba(248,244,238,0.93); backdrop-filter:blur(16px); border-bottom:1px solid rgba(122,136,96,0.2); animation:slideDown 0.6s ease-out both; }
+@keyframes slideDown { from{transform:translateY(-100%);opacity:0} to{transform:translateY(0);opacity:1} }
+.header-logo { font-family:var(--font-display); font-size:1.4rem; font-weight:300; color:var(--charcoal); text-decoration:none; letter-spacing:0.5px; }
+.header-logo span { color:var(--forest); font-style:italic; }
+.header-nav { display:flex; gap:2rem; align-items:center; list-style:none; }
+.header-nav a { font-size:0.75rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--warm-grey); text-decoration:none; transition:color 0.3s; }
+.header-nav a:hover { color:var(--forest); }
+.header-cta { padding:0.5rem 1.4rem; background:var(--forest); color:white !important; border-radius:2px; }
+.header-cta:hover { background:var(--deep-brown) !important; }
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+.hamburger span { display:block; width:22px; height:1.5px; background:var(--charcoal); }
+.mobile-menu { display:none; position:fixed; top:65px; left:0; right:0; background:rgba(248,244,238,0.97); backdrop-filter:blur(16px); padding:2rem 3rem; z-index:99; border-bottom:1px solid rgba(122,136,96,0.2); }
+.mobile-menu.open { display:block; }
+.mobile-menu ul { list-style:none; display:flex; flex-direction:column; gap:1.2rem; }
+.mobile-menu a { font-size:0.88rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--charcoal); text-decoration:none; }
+
+/* COVER — split with stark contrast */
+.cover {
+  margin-top:65px;
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:48% 52%;
+  overflow:hidden;
+}
+.cover-text-panel {
+  background:var(--charcoal);
+  padding:6rem 5rem;
+  display:flex; flex-direction:column; justify-content:space-between;
+  position:relative; overflow:hidden;
+}
+.cover-text-panel::before {
+  content:'';
+  position:absolute; bottom:0; left:0; right:0; height:40%;
+  background:linear-gradient(to top, rgba(74,96,64,0.2) 0%, transparent 100%);
+  pointer-events:none;
+}
+.cover-text-top { animation:fadeUp 0.9s ease-out 0.3s both; }
+@keyframes fadeUp { from{transform:translateY(24px);opacity:0} to{transform:translateY(0);opacity:1} }
+.cover-num-line { display:flex; align-items:center; gap:1.5rem; margin-bottom:3rem; }
+.cover-num { font-family:var(--font-display); font-size:1rem; font-weight:300; color:rgba(255,255,255,0.3); letter-spacing:4px; }
+.cover-num-rule { flex:1; height:1px; background:rgba(255,255,255,0.1); }
+.cover-season-label { font-size:0.65rem; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--sage-grey); }
+.cover-title { font-family:var(--font-display); font-size:clamp(4rem,6vw,7rem); font-weight:300; color:white; line-height:1.0; letter-spacing:-1px; }
+.cover-title-and { font-family:var(--font-display); font-size:clamp(2rem,3.5vw,3.5rem); font-weight:300; font-style:italic; color:rgba(255,255,255,0.4); line-height:1; margin:0.5rem 0; }
+.cover-title-2 { font-family:var(--font-display); font-size:clamp(4rem,6vw,7rem); font-weight:300; font-style:italic; color:var(--blush); line-height:1.0; letter-spacing:-1px; }
+.cover-text-bottom { animation:fadeUp 0.9s ease-out 0.6s both; }
+.cover-desc { font-size:0.97rem; font-weight:400; color:rgba(255,255,255,0.6); line-height:1.8; max-width:400px; margin-bottom:2.5rem; }
+.cover-actions { display:flex; flex-direction:column; gap:1rem; max-width:300px; }
+.btn-primary { padding:1rem 2.2rem; background:var(--blush); color:var(--ink); font-family:var(--font-body); font-size:0.75rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; text-decoration:none; border:none; border-radius:2px; cursor:pointer; transition:all 0.3s; text-align:center; }
+.btn-primary:hover { background:var(--dusky-pink); color:white; transform:translateY(-2px); }
+.btn-ghost { padding:1rem 2.2rem; background:transparent; color:rgba(255,255,255,0.7); font-family:var(--font-body); font-size:0.75rem; font-weight:400; letter-spacing:2px; text-transform:uppercase; text-decoration:none; border:1px solid rgba(255,255,255,0.2); border-radius:2px; cursor:pointer; transition:all 0.3s; text-align:center; }
+.btn-ghost:hover { border-color:var(--sage-grey); color:var(--sage-grey); }
+.cover-image-panel { position:relative; overflow:hidden; background:var(--parchment); }
+.cover-image-panel img { width:100%; height:100%; object-fit:cover; transition:transform 0.8s ease; }
+.cover-image-panel:hover img { transform:scale(1.04); }
+.cover-image-overlay { position:absolute; inset:0; background:linear-gradient(to left, transparent 60%, rgba(40,30,24,0.2) 100%); }
+.cover-badge { position:absolute; top:3rem; left:3rem; background:rgba(248,244,238,0.9); backdrop-filter:blur(8px); padding:1rem 1.5rem; }
+.cover-badge-l { font-size:0.6rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--earth); margin-bottom:0.3rem; }
+.cover-badge-v { font-family:var(--font-display); font-size:1rem; font-style:italic; color:var(--charcoal); }
+
+/* STORY — full width with big quote */
+.story-section { padding:8rem 5rem; background:var(--parchment); display:grid; grid-template-columns:1fr 1.5fr; gap:6rem; align-items:center; }
+.eyebrow { font-size:0.68rem; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--olive); display:flex; align-items:center; gap:1rem; margin-bottom:1rem; }
+.eyebrow::after { content:''; width:40px; height:1px; background:var(--olive); opacity:0.5; }
+.section-title { font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); font-weight:300; line-height:1.2; color:var(--charcoal); margin-bottom:1.5rem; }
+.section-title em { font-style:italic; color:var(--clay); }
+.body-text { font-size:0.97rem; font-weight:400; color:var(--warm-grey); line-height:1.9; margin-bottom:1rem; }
+.body-text strong { font-weight:600; color:var(--charcoal); }
+.story-quote-panel { position:relative; }
+.story-quote { font-family:var(--font-display); font-size:clamp(1.8rem,3vw,3rem); font-weight:300; font-style:italic; color:var(--charcoal); line-height:1.4; margin-bottom:3rem; position:relative; }
+.story-quote::before { content:''; position:absolute; left:-3rem; top:0; bottom:0; width:3px; background:var(--olive); }
+.story-images { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.story-img { border-radius:3px; overflow:hidden; aspect-ratio:3/4; box-shadow:0 6px 30px rgba(40,30,24,0.15); }
+.story-img img { width:100%; height:100%; object-fit:cover; }
+.story-img:last-child { margin-top:3rem; }
+
+/* PALETTE */
+.palette-section { padding:5rem; background:var(--cream); }
+.palette-header-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; margin-bottom:4rem; align-items:end; }
+.palette-swatches { display:flex; gap:1rem; flex-wrap:wrap; }
+.swatch { flex:1; min-width:80px; display:flex; flex-direction:column; gap:0.8rem; align-items:center; }
+.swatch-strip { width:100%; height:160px; border-radius:3px; box-shadow:0 4px 16px rgba(40,30,24,0.1); transition:transform 0.3s, box-shadow 0.3s; }
+.swatch:hover .swatch-strip { transform:scaleY(1.05); box-shadow:0 10px 30px rgba(40,30,24,0.18); }
+.swatch-name { font-size:0.68rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--warm-grey); text-align:center; }
+.swatch-hex { font-size:0.62rem; color:rgba(136,112,96,0.65); font-family:monospace; }
+.palette-note { background:var(--parchment); border-left:3px solid var(--olive); padding:1.5rem 2rem; font-size:0.9rem; font-weight:400; color:var(--warm-grey); line-height:1.75; font-style:italic; grid-column:1/-1; }
+
+/* PATTERNS */
+.patterns-section { padding:6rem 5rem; background:var(--charcoal); }
+.patterns-eyebrow { color:var(--sage-grey) !important; }
+.patterns-eyebrow::after { background:var(--sage-grey) !important; }
+.patterns-title { color:white !important; }
+.patterns-title em { color:var(--blush) !important; }
+.patterns-body-light { font-size:0.97rem; font-weight:400; color:rgba(248,244,238,0.6); line-height:1.85; max-width:540px; margin-bottom:3rem; }
+.patterns-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.pattern-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:3px; overflow:hidden; opacity:0; transform:translateY(24px); transition:opacity 0.6s ease, transform 0.6s ease, background 0.3s, border-color 0.3s; }
+.pattern-card.visible { opacity:1; transform:translateY(0); }
+.pattern-card:hover { background:rgba(255,255,255,0.07); border-color:rgba(154,168,154,0.4); }
+.pattern-card:nth-child(2) { transition-delay:0.12s; }
+.pattern-card:nth-child(3) { transition-delay:0.22s; }
+.pattern-img { aspect-ratio:1; overflow:hidden; }
+.pattern-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s; }
+.pattern-card:hover .pattern-img img { transform:scale(1.06); }
+.pattern-body { padding:1.5rem; }
+.pattern-type { font-size:0.62rem; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--sage-grey); margin-bottom:0.4rem; }
+.pattern-name { font-family:var(--font-display); font-size:1.2rem; font-weight:300; color:white; margin-bottom:0.5rem; }
+.pattern-desc { font-size:0.83rem; font-weight:400; color:rgba(248,244,238,0.55); line-height:1.7; }
+
+/* MOCKUPS */
+.mockups-section { padding:6rem 5rem; background:var(--parchment); }
+.mockups-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:3rem; }
+.mockup-tall { grid-row:span 2; }
+.mockup-item { border-radius:3px; overflow:hidden; position:relative; background:var(--charcoal); aspect-ratio:4/3; opacity:0; transform:scale(0.97); transition:opacity 0.7s ease, transform 0.7s ease, box-shadow 0.4s; box-shadow:0 4px 20px rgba(40,30,24,0.12); }
+.mockup-tall { aspect-ratio:auto; }
+.mockup-item.visible { opacity:1; transform:scale(1); }
+.mockup-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.7s; }
+.mockup-item:hover img { transform:scale(1.04); }
+.mockup-label { position:absolute; bottom:1rem; left:1rem; background:rgba(248,244,238,0.9); backdrop-filter:blur(4px); padding:0.3rem 0.8rem; font-size:0.62rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--clay); }
+
+/* LICENSING */
+.licensing-cta { background:linear-gradient(150deg, var(--forest) 0%, var(--deep-brown) 100%); padding:7rem 5rem; text-align:center; position:relative; overflow:hidden; }
+.licensing-cta::before { content:''; position:absolute; inset:0; background-image:radial-gradient(circle, rgba(154,168,154,0.06) 1px, transparent 1px); background-size:28px 28px; }
+.cta-inner { max-width:680px; margin:0 auto; position:relative; z-index:2; }
+.cta-eyebrow { color:var(--sage-grey) !important; justify-content:center; }
+.cta-eyebrow::after { background:var(--sage-grey) !important; }
+.cta-title { font-family:var(--font-display); font-size:clamp(2.5rem,5vw,4rem); font-weight:300; color:white; line-height:1.15; margin-bottom:1.5rem; }
+.cta-title em { font-style:italic; color:var(--blush); }
+.cta-body { font-size:1rem; font-weight:400; color:rgba(255,255,255,0.65); line-height:1.85; margin-bottom:3rem; }
+.cta-buttons { display:flex; justify-content:center; gap:1.2rem; flex-wrap:wrap; }
+.btn-spoonflower { padding:1rem 2.5rem; background:var(--blush); color:var(--ink); font-family:var(--font-body); font-size:0.75rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; text-decoration:none; border:none; border-radius:2px; cursor:pointer; transition:all 0.3s; box-shadow:0 4px 20px rgba(0,0,0,0.2); }
+.btn-spoonflower:hover { background:white; transform:translateY(-2px); }
+.btn-license-cta { padding:1rem 2.5rem; background:transparent; color:white; font-family:var(--font-body); font-size:0.75rem; font-weight:400; letter-spacing:2px; text-transform:uppercase; text-decoration:none; border:1px solid rgba(255,255,255,0.25); border-radius:2px; cursor:pointer; transition:all 0.3s; }
+.btn-license-cta:hover { border-color:var(--sage-grey); color:var(--sage-grey); }
+.cta-note { font-size:0.75rem; font-weight:400; color:rgba(255,255,255,0.3); margin-top:2rem; line-height:1.7; }
+
+footer { background:var(--ink); color:var(--cream); padding:3rem 5rem 2rem; }
+.footer-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3rem; padding-bottom:2rem; border-bottom:1px solid rgba(248,244,238,0.1); max-width:1200px; margin:0 auto; }
+.footer-logo-name { font-family:var(--font-display); font-size:1.5rem; font-weight:300; color:var(--cream); }
+.footer-logo-sub { font-size:0.6rem; letter-spacing:3px; text-transform:uppercase; color:var(--sage-grey); display:block; margin-top:4px; }
+.footer-tagline { font-size:0.83rem; font-weight:400; color:rgba(248,244,238,0.4); margin-top:1rem; line-height:1.7; }
+.footer-col-label { font-size:0.62rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--sage-grey); margin-bottom:1.2rem; }
+.social-links { display:flex; flex-direction:column; gap:0.7rem; }
+.social-link { font-size:0.83rem; font-weight:400; color:rgba(248,244,238,0.6); text-decoration:none; transition:color 0.3s; }
+.social-link:hover { color:var(--sage-grey); }
+.contact-item { margin-bottom:0.8rem; }
+.contact-label { font-size:0.6rem; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:rgba(248,244,238,0.3); display:block; margin-bottom:0.2rem; }
+.contact-value { font-size:0.85rem; font-weight:400; color:rgba(248,244,238,0.65); text-decoration:none; transition:color 0.3s; }
+.contact-value:hover { color:var(--sage-grey); }
+.footer-bottom { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:1.5rem auto 0; }
+.footer-copy { font-size:0.72rem; font-weight:400; color:rgba(248,244,238,0.25); }
+.footer-back { font-size:0.72rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(248,244,238,0.4); text-decoration:none; transition:color 0.3s; }
+.footer-back:hover { color:var(--sage-grey); }
+
+.reveal { opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+@media(max-width:900px) {
+  header { padding:1rem 1.5rem; }
+  .header-nav { display:none; }
+  .hamburger { display:flex; }
+  .cover { grid-template-columns:1fr; }
+  .cover-text-panel { padding:4rem 2rem; min-height:auto; }
+  .cover-image-panel { min-height:55vw; }
+  .cover-image-panel img { position:absolute; inset:0; }
+  .story-section { grid-template-columns:1fr; gap:3rem; padding:4rem 2rem; }
+  .story-quote::before { left:-1.5rem; }
+  .story-images { grid-template-columns:1fr 1fr; }
+  .story-img:last-child { margin-top:1.5rem; }
+  .palette-section { padding:4rem 2rem; }
+  .palette-header-grid { grid-template-columns:1fr; }
+  .patterns-section { padding:4rem 2rem; }
+  .patterns-grid { grid-template-columns:1fr 1fr; gap:1.2rem; }
+  .mockups-section { padding:4rem 2rem; }
+  .mockups-grid { grid-template-columns:1fr 1fr; }
+  .mockup-tall { grid-row:span 1; aspect-ratio:4/3; }
+  .licensing-cta { padding:4rem 2rem; }
+  footer { padding:3rem 2rem 2rem; }
+  .footer-grid { grid-template-columns:1fr; gap:2rem; }
+  .footer-bottom { flex-direction:column; gap:0.8rem; align-items:flex-start; }
+}
+@media(max-width:580px) {
+  .patterns-grid { grid-template-columns:1fr; }
+  .story-images { grid-template-columns:1fr; }
+  .story-img:last-child { margin-top:0; }
+  .mockups-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="southpaw-lookbook.html" class="header-logo">Southpaw <span>Handmade</span></a>
+  <ul class="header-nav">
+    <li><a href="southpaw-lookbook.html#collections">All Collections</a></li>
+    <li><a href="#palette">Palette</a></li>
+    <li><a href="#patterns">Patterns</a></li>
+    <li><a href="#licensing" class="header-cta">License This</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="southpaw-lookbook.html#collections">← All Collections</a></li>
+    <li><a href="#palette">Palette</a></li>
+    <li><a href="#patterns">Patterns</a></li>
+    <li><a href="#licensing">License This Collection</a></li>
+  </ul>
+</nav>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-text-panel">
+    <div class="cover-text-top">
+      <div class="cover-num-line">
+        <span class="cover-num">06</span>
+        <div class="cover-num-rule"></div>
+        <span class="cover-season-label">Summer</span>
+      </div>
+      <h1>
+        <div class="cover-title">Blossom</div>
+        <div class="cover-title-and">&amp;</div>
+        <div class="cover-title-2">Blade</div>
+      </h1>
+    </div>
+    <div class="cover-text-bottom">
+      <p class="cover-desc">Two things that don't seem like they should go together — the soft and the sharp, the open and the structured — and yet, in nature, they always do.</p>
+      <div class="cover-actions">
+        <a href="#licensing" class="btn-primary">License This Collection</a>
+        <a href="https://www.spoonflower.com" target="_blank" class="btn-ghost">Shop on Spoonflower</a>
+      </div>
+    </div>
+  </div>
+  <div class="cover-image-panel">
+    <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=900&h=1200&fit=crop" alt="Blossom and Blade">
+    <div class="cover-image-overlay"></div>
+    <div class="cover-badge">
+      <div class="cover-badge-l">Collection</div>
+      <div class="cover-badge-v">Summer 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story-section">
+  <div class="reveal">
+    <p class="eyebrow">The Story</p>
+    <h2 class="section-title">The tension that<br><em>makes beauty possible</em></h2>
+    <p class="body-text">Blossom and Blade was born from looking at a garden and noticing what we usually don't: <strong>the contrast between the soft and the structural.</strong> The flower and the thorn. The open bloom and the tough stem that holds it. The delicate petal and the bark that bears it.</p>
+    <p class="body-text">This collection lives in that tension. <strong>Earth tones and architectural line work</strong> sit alongside loose florals and generous foliage. Warmth and rigour in conversation. It's a collection for people who know that strength and softness aren't opposites — they're the same thing.</p>
+  </div>
+  <div>
+    <p class="story-quote">"Resilience isn't the absence of softness. It's what makes softness possible."</p>
+    <div class="story-images">
+      <div class="story-img">
+        <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=500&h=700&fit=crop" alt="Structural botanical">
+      </div>
+      <div class="story-img">
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&h=700&fit=crop" alt="Soft bloom">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PALETTE -->
+<section id="palette" class="palette-section">
+  <div class="palette-header-grid reveal">
+    <div>
+      <p class="eyebrow">Colour Story</p>
+      <h2 class="section-title">The Palette</h2>
+      <p class="body-text">Six earth tones that carry both warmth and weight — the colours of bark, stone, dried grass, and bloom.</p>
+    </div>
+    <div class="palette-note">"Blossom and Blade works particularly well for brands seeking a nature-rooted palette without the sweetness of a floral collection. It occupies its own territory: grounded, warm, and quietly confident."</div>
+  </div>
+  <div class="palette-swatches">
+    <div class="swatch">
+      <div class="swatch-strip" style="background:#D8C8A8;"></div>
+      <div class="swatch-name">Warm Tan</div>
+      <div class="swatch-hex">#D8C8A8</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-strip" style="background:#B09070;"></div>
+      <div class="swatch-name">Earth</div>
+      <div class="swatch-hex">#B09070</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-strip" style="background:#D8B0A0;"></div>
+      <div class="swatch-name">Blush</div>
+      <div class="swatch-hex">#D8B0A0</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-strip" style="background:#7A8860;"></div>
+      <div class="swatch-name">Olive</div>
+      <div class="swatch-hex">#7A8860</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-strip" style="background:#9AA89A;"></div>
+      <div class="swatch-name">Sage Grey</div>
+      <div class="swatch-hex">#9AA89A</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-strip" style="background:#6A4830;"></div>
+      <div class="swatch-name">Deep Brown</div>
+      <div class="swatch-hex">#6A4830</div>
+    </div>
+  </div>
+</section>
+
+<!-- PATTERNS -->
+<section id="patterns" class="patterns-section">
+  <div class="reveal">
+    <p class="eyebrow patterns-eyebrow">The Designs</p>
+    <h2 class="section-title patterns-title">Pattern <em>Details</em></h2>
+    <p class="patterns-body-light">Three prints drawn from nature's architecture — the places where structure and softness are inseparable.</p>
+  </div>
+  <div class="patterns-grid">
+    <div class="pattern-card">
+      <div class="pattern-img"><img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=600&h=600&fit=crop" alt="Botanical Line"></div>
+      <div class="pattern-body">
+        <div class="pattern-type">Line Repeat</div>
+        <div class="pattern-name">Botanical Line</div>
+        <div class="pattern-desc">Fine-line botanical illustration — each plant drawn in careful architectural detail on a warm tan ground. Ink-like precision.</div>
+      </div>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-img"><img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=600&fit=crop" alt="Earth Bloom"></div>
+      <div class="pattern-body">
+        <div class="pattern-type">All-Over Repeat</div>
+        <div class="pattern-name">Earth Bloom</div>
+        <div class="pattern-desc">Loose florals in earth tones — blush, rust, and sage — combined with architectural leaf forms for a bold but grounded print.</div>
+      </div>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-img"><img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&h=600&fit=crop" alt="Root & Crown"></div>
+      <div class="pattern-body">
+        <div class="pattern-type">Directional Repeat</div>
+        <div class="pattern-name">Root &amp; Crown</div>
+        <div class="pattern-desc">The full plant from root to crown — drawn to show the entire structure, strength below, softness above. Tall and vertical in form.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOCKUPS -->
+<section class="mockups-section">
+  <div class="reveal">
+    <p class="eyebrow">In the Wild</p>
+    <h2 class="section-title">Grounded in <em>real surfaces</em></h2>
+    <p class="body-text" style="max-width:540px">Blossom and Blade was designed for products that want to feel both beautiful and considered — the gift that gets kept, the fabric that becomes the statement piece.</p>
+  </div>
+  <div class="mockups-grid">
+    <div class="mockup-item mockup-tall">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=900&fit=crop" alt="Fabric">
+      <div class="mockup-label">Fabric</div>
+    </div>
+    <div class="mockup-item">
+      <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=400&fit=crop" alt="Stationery">
+      <div class="mockup-label">Stationery</div>
+    </div>
+    <div class="mockup-item">
+      <img src="https://images.unsplash.com/photo-1616628188859-7a11abb6fcc9?w=600&h=400&fit=crop" alt="Homewares">
+      <div class="mockup-label">Homewares</div>
+    </div>
+  </div>
+</section>
+
+<!-- LICENSING -->
+<section id="licensing" class="licensing-cta">
+  <div class="cta-inner">
+    <p class="eyebrow cta-eyebrow">For Licensing Agents & Brands</p>
+    <h2 class="cta-title">Strength and softness,<br><em>ready to license.</em></h2>
+    <p class="cta-body">Blossom and Blade is available for fabric, stationery, wallpaper, homewares, and gifting licensing. Its earth-toned palette makes it exceptionally versatile across product categories and seasons.</p>
+    <div class="cta-buttons">
+      <a href="https://www.spoonflower.com" target="_blank" class="btn-spoonflower">Shop on Spoonflower</a>
+      <a href="mailto:hello@southpawhandmade.com?subject=Licensing Inquiry – Blossom and Blade" class="btn-license-cta">Inquire About Licensing</a>
+    </div>
+    <p class="cta-note">All patterns supplied as high-resolution repeat tiles. Exclusive terms and custom colourways available on request.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo-name">Southpaw Handmade</div>
+      <span class="footer-logo-sub">Surface Pattern Design</span>
+      <p class="footer-tagline">Curious Hands. Creative Heart.</p>
+    </div>
+    <div>
+      <p class="footer-col-label">Find Me Here</p>
+      <div class="social-links">
+        <a href="https://instagram.com" target="_blank" class="social-link">↗ Instagram</a>
+        <a href="https://pinterest.com" target="_blank" class="social-link">↗ Pinterest</a>
+        <a href="https://spoonflower.com" target="_blank" class="social-link">↗ Spoonflower Shop</a>
+      </div>
+    </div>
+    <div>
+      <p class="footer-col-label">Get In Touch</p>
+      <div class="contact-item"><span class="contact-label">Licensing</span><a href="mailto:hello@southpawhandmade.com" class="contact-value">hello@southpawhandmade.com</a></div>
+      <div class="contact-item"><span class="contact-label">Custom Work</span><a href="mailto:studio@southpawhandmade.com" class="contact-value">studio@southpawhandmade.com</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Southpaw Handmade. All designs original and protected by copyright.</span>
+    <a href="southpaw-lookbook.html" class="footer-back">← Back to All Collections</a>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold:0.08, rootMargin:'0px 0px -40px 0px' });
+document.querySelectorAll('.pattern-card, .mockup-item, .reveal').forEach(el => observer.observe(el));
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+</script>
+</body>
+</html>
