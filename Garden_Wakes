@@ -1,1 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When The Garden Wakes — Southpaw Handmade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FAF8F2;
+  --parchment: #F3EDE0;
+  --blush-white: #FDF5EF;
+  --spring-green: #B8CDAA;
+  --leaf: #7A9E6E;
+  --moss: #4E7242;
+  --petal-pink: #E8BEB2;
+  --rose: #D4907C;
+  --warm-peach: #EECFB8;
+  --butter: #F0DDA8;
+  --sky: #C4D8E2;
+  --charcoal: #2C2824;
+  --ink: #1A1612;
+  --warm-grey: #8A7E72;
+  --light-rule: rgba(78,114,66,0.15);
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Jost', sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--charcoal);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  pointer-events:none; z-index:9999;
+  opacity:0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
+/* HEADER */
+header {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:1.1rem 3rem;
+  background:rgba(250,248,242,0.93);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(120,158,110,0.2);
+  animation: slideDown 0.6s ease-out both;
+}
+@keyframes slideDown { from{transform:translateY(-100%);opacity:0} to{transform:translateY(0);opacity:1} }
+.header-logo { font-family:var(--font-display); font-size:1.3rem; font-weight:500; color:var(--charcoal); text-decoration:none; }
+.header-logo span { color:var(--moss); font-style:italic; }
+.header-nav { display:flex; gap:2rem; align-items:center; list-style:none; }
+.header-nav a { font-size:0.78rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--warm-grey); text-decoration:none; transition:color 0.3s; }
+.header-nav a:hover { color:var(--moss); }
+.header-cta { padding:0.5rem 1.4rem; background:var(--moss); color:white !important; border-radius:2px; transition:background 0.3s !important; }
+.header-cta:hover { background:var(--leaf) !important; }
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+.hamburger span { display:block; width:22px; height:1.5px; background:var(--charcoal); transition:all 0.3s; }
+.mobile-menu { display:none; position:fixed; top:65px; left:0; right:0; background:rgba(250,248,242,0.97); backdrop-filter:blur(16px); padding:2rem 3rem; z-index:99; border-bottom:1px solid var(--light-rule); }
+.mobile-menu.open { display:block; }
+.mobile-menu ul { list-style:none; display:flex; flex-direction:column; gap:1.2rem; }
+.mobile-menu a { font-size:0.88rem; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:var(--charcoal); text-decoration:none; }
+
+/* COLLECTION COVER */
+.cover {
+  margin-top:65px;
+  min-height:100vh;
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  overflow:hidden;
+}
+.cover-left {
+  background:linear-gradient(160deg, #EFF5EA 0%, #E0EDD8 100%);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:5rem 4rem 5rem 5rem;
+  position:relative;
+  overflow:hidden;
+}
+.cover-left::before {
+  content:'';
+  position:absolute; top:-60px; left:-60px;
+  width:300px; height:300px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(184,205,170,0.4) 0%, transparent 70%);
+  pointer-events:none;
+}
+.cover-left::after {
+  content:'';
+  position:absolute; bottom:-40px; right:-40px;
+  width:200px; height:200px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(212,144,124,0.2) 0%, transparent 70%);
+  pointer-events:none;
+}
+.collection-number {
+  font-family:var(--font-display);
+  font-size:7rem;
+  font-weight:400;
+  color:rgba(78,114,66,0.1);
+  line-height:1;
+  margin-bottom:-1rem;
+  animation:fadeUp 0.9s ease-out 0.2s both;
+}
+@keyframes fadeUp { from{transform:translateY(30px);opacity:0} to{transform:translateY(0);opacity:1} }
+.collection-season {
+  font-size:0.7rem; font-weight:600; letter-spacing:4px; text-transform:uppercase;
+  color:var(--moss);
+  display:flex; align-items:center; gap:0.8rem;
+  margin-bottom:1.2rem;
+  animation:fadeUp 0.9s ease-out 0.35s both;
+}
+.collection-season::before { content:''; display:block; width:30px; height:1px; background:var(--moss); }
+.cover-title {
+  font-family:var(--font-display);
+  font-size:clamp(3rem,5vw,5.5rem);
+  font-weight:400;
+  line-height:1.1;
+  color:var(--charcoal);
+  margin-bottom:1.8rem;
+  animation:fadeUp 0.9s ease-out 0.45s both;
+}
+.cover-title em { font-style:italic; color:var(--moss); }
+.cover-tagline {
+  font-size:1.05rem;
+  font-weight:300;
+  color:var(--warm-grey);
+  line-height:1.8;
+  max-width:420px;
+  margin-bottom:3rem;
+  animation:fadeUp 0.9s ease-out 0.55s both;
+}
+.cover-actions { display:flex; gap:1rem; flex-wrap:wrap; animation:fadeUp 0.9s ease-out 0.65s both; }
+.btn-primary {
+  padding:0.9rem 2.2rem;
+  background:var(--moss);
+  color:white;
+  font-family:var(--font-body); font-size:0.78rem; font-weight:600;
+  letter-spacing:2px; text-transform:uppercase;
+  text-decoration:none; border:none; border-radius:2px; cursor:pointer;
+  transition:all 0.3s ease;
+  box-shadow:0 4px 16px rgba(78,114,66,0.3);
+}
+.btn-primary:hover { background:var(--leaf); transform:translateY(-2px); box-shadow:0 8px 24px rgba(78,114,66,0.4); }
+.btn-ghost {
+  padding:0.9rem 2.2rem;
+  background:transparent; color:var(--charcoal);
+  font-family:var(--font-body); font-size:0.78rem; font-weight:500;
+  letter-spacing:2px; text-transform:uppercase;
+  text-decoration:none; border:1px solid rgba(44,40,36,0.2); border-radius:2px; cursor:pointer;
+  transition:all 0.3s ease;
+}
+.btn-ghost:hover { border-color:var(--moss); color:var(--moss); }
+
+.cover-right {
+  position:relative;
+  overflow:hidden;
+  background:var(--charcoal);
+}
+.cover-right img {
+  width:100%; height:100%;
+  object-fit:cover;
+  opacity:0.88;
+  animation:coverZoom 16s ease-in-out infinite alternate;
+}
+@keyframes coverZoom { from{transform:scale(1)} to{transform:scale(1.06)} }
+.cover-image-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to right, rgba(239,245,234,0.15) 0%, transparent 40%);
+  pointer-events:none;
+}
+.cover-badge {
+  position:absolute; bottom:2.5rem; right:2.5rem;
+  background:rgba(250,248,242,0.9); backdrop-filter:blur(8px);
+  padding:1.2rem 1.5rem;
+  border-left:3px solid var(--moss);
+  animation:fadeUp 0.9s ease-out 0.8s both;
+}
+.cover-badge-label { font-size:0.62rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--warm-grey); margin-bottom:0.3rem; }
+.cover-badge-value { font-family:var(--font-display); font-size:1.1rem; color:var(--charcoal); }
+.cover-scroll-hint {
+  position:absolute; bottom:3rem; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:0.6rem;
+  color:var(--warm-grey); font-size:0.62rem; font-weight:600; letter-spacing:3px; text-transform:uppercase;
+  animation:bounce 2s ease-in-out infinite;
+}
+.cover-scroll-hint::after {
+  content:''; width:1px; height:40px;
+  background:linear-gradient(to bottom, var(--moss), transparent);
+}
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+/* SECTION COMMON */
+section { padding:6rem 5rem; }
+.eyebrow {
+  font-size:0.68rem; font-weight:600; letter-spacing:4px; text-transform:uppercase;
+  color:var(--moss);
+  display:flex; align-items:center; gap:1rem;
+  margin-bottom:1rem;
+}
+.eyebrow::after { content:''; width:40px; height:1px; background:var(--moss); opacity:0.5; }
+.section-title {
+  font-family:var(--font-display);
+  font-size:clamp(2.2rem,4vw,3.5rem);
+  font-weight:400; line-height:1.15;
+  color:var(--charcoal);
+  margin-bottom:1.5rem;
+}
+.section-title em { font-style:italic; color:var(--moss); }
+.body-text {
+  font-size:1rem; font-weight:300; color:var(--warm-grey); line-height:1.9;
+}
+.body-text strong { font-weight:500; color:var(--charcoal); }
+
+/* STORY SECTION */
+.story-section {
+  background:var(--blush-white);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+  padding:0;
+  min-height:80vh;
+  align-items:stretch;
+}
+.story-text-panel {
+  padding:6rem 5rem;
+  display:flex; flex-direction:column; justify-content:center;
+  background:var(--parchment);
+  position:relative;
+}
+.story-text-panel::after {
+  content:'"';
+  position:absolute; top:3rem; right:3rem;
+  font-family:var(--font-display);
+  font-size:12rem; line-height:1;
+  color:rgba(78,114,66,0.07);
+  pointer-events:none;
+}
+.story-lead {
+  font-family:var(--font-display);
+  font-size:1.4rem;
+  font-weight:400;
+  font-style:italic;
+  color:var(--charcoal);
+  line-height:1.6;
+  margin-bottom:2rem;
+  border-left:3px solid var(--moss);
+  padding-left:1.5rem;
+}
+.story-body { font-size:0.97rem; font-weight:300; color:var(--warm-grey); line-height:1.95; margin-bottom:1.5rem; }
+.story-body strong { font-weight:500; color:var(--charcoal); }
+.story-image-panel { position:relative; overflow:hidden; background:var(--charcoal); min-height:500px; }
+.story-image-panel img { width:100%; height:100%; object-fit:cover; opacity:0.9; transition:transform 0.8s ease; }
+.story-image-panel:hover img { transform:scale(1.04); }
+.story-caption {
+  position:absolute; bottom:2rem; left:2rem;
+  background:rgba(250,248,242,0.9); backdrop-filter:blur(8px);
+  padding:0.8rem 1.2rem;
+  font-size:0.72rem; font-weight:500; letter-spacing:2px; text-transform:uppercase;
+  color:var(--moss);
+}
+
+/* PALETTE SECTION */
+.palette-section {
+  background:var(--cream);
+  text-align:center;
+}
+.palette-section .section-title { margin-bottom:0.5rem; }
+.palette-intro { font-size:0.97rem; font-weight:300; color:var(--warm-grey); margin-bottom:4rem; line-height:1.8; max-width:580px; margin-left:auto; margin-right:auto; }
+.palette-grid {
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:1.5rem;
+  max-width:900px;
+  margin:0 auto 3rem;
+}
+.swatch {
+  display:flex; flex-direction:column; align-items:center; gap:0.8rem;
+}
+.swatch-color {
+  width:100%; aspect-ratio:1;
+  border-radius:50%;
+  box-shadow:0 4px 20px rgba(44,40,36,0.12);
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+.swatch:hover .swatch-color { transform:scale(1.08); box-shadow:0 8px 32px rgba(44,40,36,0.18); }
+.swatch-name { font-size:0.72rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--warm-grey); }
+.swatch-hex { font-size:0.65rem; font-weight:400; color:rgba(138,126,114,0.7); font-family:monospace; }
+.palette-note {
+  background:var(--parchment); border-left:3px solid var(--moss);
+  padding:1.2rem 2rem; max-width:600px; margin:0 auto;
+  font-size:0.9rem; font-weight:300; color:var(--warm-grey); line-height:1.7;
+  font-style:italic;
+}
+
+/* PATTERNS SECTION */
+.patterns-section {
+  background:linear-gradient(180deg, #EFF5EA 0%, var(--cream) 100%);
+  padding:6rem 5rem;
+}
+.patterns-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2rem;
+  margin-top:3rem;
+}
+.pattern-card {
+  border-radius:3px; overflow:hidden;
+  box-shadow:0 4px 24px rgba(44,40,36,0.1);
+  background:white;
+  opacity:0; transform:translateY(24px);
+  transition:opacity 0.6s ease, transform 0.6s ease, box-shadow 0.4s ease;
+}
+.pattern-card.visible { opacity:1; transform:translateY(0); }
+.pattern-card:hover { box-shadow:0 12px 48px rgba(44,40,36,0.18); }
+.pattern-card:nth-child(2) { transition-delay:0.1s; }
+.pattern-card:nth-child(3) { transition-delay:0.2s; }
+.pattern-image {
+  aspect-ratio:1;
+  overflow:hidden;
+}
+.pattern-image img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease; }
+.pattern-card:hover .pattern-image img { transform:scale(1.06); }
+.pattern-info { padding:1.5rem; border-top:3px solid transparent; transition:border-color 0.3s; }
+.pattern-card:hover .pattern-info { border-color:var(--moss); }
+.pattern-name { font-family:var(--font-display); font-size:1.2rem; font-weight:500; color:var(--charcoal); margin-bottom:0.4rem; }
+.pattern-desc { font-size:0.83rem; font-weight:300; color:var(--warm-grey); line-height:1.7; }
+.pattern-type { font-size:0.62rem; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--moss); margin-bottom:0.5rem; }
+
+/* MOCKUPS SECTION */
+.mockups-section {
+  background:var(--parchment);
+  padding:6rem 5rem;
+}
+.mockups-grid {
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:1.5rem;
+  margin-top:3rem;
+}
+.mockup-item {
+  border-radius:3px;
+  overflow:hidden;
+  position:relative;
+  background:var(--charcoal);
+  opacity:0; transform:scale(0.97);
+  transition:opacity 0.7s ease, transform 0.7s ease, box-shadow 0.4s ease;
+  box-shadow:0 4px 20px rgba(44,40,36,0.1);
+}
+.mockup-item.visible { opacity:1; transform:scale(1); }
+.mockup-item:hover { box-shadow:0 12px 48px rgba(44,40,36,0.2); }
+.mockup-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.7s ease; }
+.mockup-item:hover img { transform:scale(1.04); }
+.mockup-item:first-child { grid-row:span 2; }
+.mockup-label {
+  position:absolute; bottom:1rem; left:1rem;
+  background:rgba(250,248,242,0.9); backdrop-filter:blur(4px);
+  padding:0.3rem 0.8rem;
+  font-size:0.62rem; font-weight:600; letter-spacing:2px; text-transform:uppercase;
+  color:var(--moss);
+}
+
+/* LICENSING CTA */
+.licensing-cta {
+  background:var(--charcoal);
+  padding:6rem 5rem;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+.licensing-cta::before {
+  content:'';
+  position:absolute; inset:0;
+  background-image: radial-gradient(circle, rgba(184,205,170,0.06) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+.licensing-cta::after {
+  content:'01';
+  position:absolute; right:-1rem; bottom:-3rem;
+  font-family:var(--font-display);
+  font-size:22rem; font-weight:400; line-height:1;
+  color:rgba(255,255,255,0.02);
+  pointer-events:none;
+}
+.cta-inner {
+  max-width:680px; margin:0 auto;
+  position:relative; z-index:2;
+}
+.cta-eyebrow { color:var(--spring-green) !important; }
+.cta-eyebrow::after { background:var(--spring-green) !important; }
+.cta-title { font-family:var(--font-display); font-size:clamp(2.2rem,4vw,3.5rem); font-weight:400; color:white; line-height:1.2; margin-bottom:1.5rem; }
+.cta-title em { font-style:italic; color:var(--petal-pink); }
+.cta-body { font-size:1rem; font-weight:300; color:rgba(250,248,242,0.7); line-height:1.85; margin-bottom:3rem; }
+.cta-buttons { display:flex; justify-content:center; gap:1.2rem; flex-wrap:wrap; }
+.btn-spoonflower {
+  padding:1rem 2.5rem;
+  background:var(--spring-green); color:var(--ink);
+  font-family:var(--font-body); font-size:0.78rem; font-weight:700;
+  letter-spacing:2px; text-transform:uppercase;
+  text-decoration:none; border:none; border-radius:2px; cursor:pointer;
+  transition:all 0.3s ease;
+  box-shadow:0 4px 20px rgba(184,205,170,0.3);
+}
+.btn-spoonflower:hover { background:var(--leaf); color:white; transform:translateY(-2px); box-shadow:0 8px 32px rgba(184,205,170,0.4); }
+.btn-license-cta {
+  padding:1rem 2.5rem;
+  background:transparent; color:white;
+  font-family:var(--font-body); font-size:0.78rem; font-weight:500;
+  letter-spacing:2px; text-transform:uppercase;
+  text-decoration:none; border:1px solid rgba(255,255,255,0.3); border-radius:2px; cursor:pointer;
+  transition:all 0.3s ease;
+}
+.btn-license-cta:hover { border-color:var(--petal-pink); color:var(--petal-pink); }
+.cta-note { font-size:0.78rem; font-weight:300; color:rgba(250,248,242,0.4); margin-top:2rem; line-height:1.7; }
+
+/* FOOTER */
+footer {
+  background:var(--ink); color:var(--cream);
+  padding:3rem 5rem 2rem;
+}
+.footer-grid {
+  display:grid; grid-template-columns:1fr 1fr 1fr; gap:3rem;
+  padding-bottom:2rem; border-bottom:1px solid rgba(250,248,242,0.1);
+  max-width:1200px; margin:0 auto;
+}
+.footer-logo-name { font-family:var(--font-display); font-size:1.5rem; font-weight:400; color:var(--cream); }
+.footer-logo-sub { font-size:0.6rem; letter-spacing:3px; text-transform:uppercase; color:var(--spring-green); display:block; margin-top:4px; }
+.footer-tagline { font-size:0.83rem; font-weight:300; color:rgba(250,248,242,0.45); margin-top:1rem; line-height:1.7; }
+.footer-col-label { font-size:0.62rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--spring-green); margin-bottom:1.2rem; }
+.social-links { display:flex; flex-direction:column; gap:0.7rem; }
+.social-link { font-size:0.83rem; font-weight:300; color:rgba(250,248,242,0.6); text-decoration:none; transition:color 0.3s; display:flex; align-items:center; gap:0.6rem; }
+.social-link:hover { color:var(--spring-green); }
+.contact-item { margin-bottom:0.8rem; }
+.contact-label { font-size:0.6rem; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:rgba(250,248,242,0.35); display:block; margin-bottom:0.2rem; }
+.contact-value { font-size:0.85rem; font-weight:300; color:rgba(250,248,242,0.7); text-decoration:none; transition:color 0.3s; }
+.contact-value:hover { color:var(--spring-green); }
+.footer-bottom { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:1.5rem auto 0; }
+.footer-copy { font-size:0.72rem; font-weight:300; color:rgba(250,248,242,0.28); }
+.footer-back { font-size:0.72rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:rgba(250,248,242,0.4); text-decoration:none; transition:color 0.3s; }
+.footer-back:hover { color:var(--spring-green); }
+
+/* SCROLL REVEAL */
+.reveal { opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* RESPONSIVE */
+@media(max-width:900px) {
+  header { padding:1rem 1.5rem; }
+  .header-nav { display:none; }
+  .hamburger { display:flex; }
+  .cover { grid-template-columns:1fr; min-height:auto; }
+  .cover-left { padding:4rem 2rem 3rem; }
+  .cover-right { min-height:55vw; }
+  .cover-right img { position:absolute; inset:0; width:100%; height:100%; }
+  .story-section { grid-template-columns:1fr; }
+  .story-image-panel { min-height:320px; }
+  .story-text-panel { padding:4rem 2rem; }
+  .palette-grid { grid-template-columns:repeat(3,1fr); }
+  .patterns-grid { grid-template-columns:1fr 1fr; }
+  .mockups-grid { grid-template-columns:1fr 1fr; }
+  .mockup-item:first-child { grid-row:span 1; }
+  section { padding:4rem 2rem; }
+  .patterns-section, .mockups-section, .licensing-cta, footer { padding:4rem 2rem; }
+  .footer-grid { grid-template-columns:1fr; gap:2rem; }
+  .footer-bottom { flex-direction:column; gap:0.8rem; align-items:flex-start; }
+}
+@media(max-width:580px) {
+  .patterns-grid { grid-template-columns:1fr; }
+  .mockups-grid { grid-template-columns:1fr; }
+  .palette-grid { grid-template-columns:repeat(3,1fr); gap:1rem; }
+  .cover-left { padding:3rem 1.5rem; }
+  .collection-number { font-size:5rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="southpaw-lookbook.html" class="header-logo">Southpaw <span>Handmade</span></a>
+  <ul class="header-nav">
+    <li><a href="southpaw-lookbook.html#collections">All Collections</a></li>
+    <li><a href="#palette">Palette</a></li>
+    <li><a href="#patterns">Patterns</a></li>
+    <li><a href="#licensing" class="header-cta">License This</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="southpaw-lookbook.html#collections">← All Collections</a></li>
+    <li><a href="#palette">Palette</a></li>
+    <li><a href="#patterns">Patterns</a></li>
+    <li><a href="#licensing">License This Collection</a></li>
+  </ul>
+</nav>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-left">
+    <div class="collection-number">01</div>
+    <p class="collection-season">Spring Collection</p>
+    <h1 class="cover-title">When The<br><em>Garden Wakes</em></h1>
+    <p class="cover-tagline">There's a moment in early spring — still cool, light just lengthening — when the garden stirs before you've noticed. This collection lives in that moment.</p>
+    <div class="cover-actions">
+      <a href="#licensing" class="btn-primary">License This Collection</a>
+      <a href="https://www.spoonflower.com" target="_blank" class="btn-ghost">Shop on Spoonflower</a>
+    </div>
+  </div>
+  <div class="cover-right">
+    <img src="https://images.unsplash.com/photo-1490750967868-88df5691cc62?w=900&h=1200&fit=crop" alt="When The Garden Wakes">
+    <div class="cover-image-overlay"></div>
+    <div class="cover-badge">
+      <div class="cover-badge-label">Collection</div>
+      <div class="cover-badge-value">Spring 2025</div>
+    </div>
+  </div>
+  <div class="cover-scroll-hint">Scroll to explore</div>
+</section>
+
+<!-- STORY -->
+<section class="story-section">
+  <div class="story-text-panel">
+    <p class="eyebrow">The Story</p>
+    <h2 class="section-title">The <em>quiet hour</em> before the world catches up</h2>
+    <p class="story-lead">"Spring is not a loud thing. It whispers first — in the pale green shoot, the tentative blossom, the morning that holds just a little longer."</p>
+    <p class="story-body">When The Garden Wakes was born from early mornings in a damp garden, coffee in hand, watching things return. <strong>It's the collection for makers who believe beauty should feel lived-in</strong>, not performed — who want their projects to carry the memory of earth warming beneath their hands.</p>
+    <p class="story-body">The motifs are soft-edged and botanical: tender shoots unfurling, buds just beginning to open, root systems drawn with the same care as the flower above. <strong>This is spring before it becomes summer</strong> — full of possibility but not yet arrived.</p>
+  </div>
+  <div class="story-image-panel">
+    <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=700&h=900&fit=crop" alt="Garden Details">
+    <div class="story-caption">Collection Inspiration</div>
+  </div>
+</section>
+
+<!-- PALETTE -->
+<section id="palette" class="palette-section">
+  <p class="eyebrow" style="justify-content:center">Colour Story</p>
+  <h2 class="section-title">The Palette</h2>
+  <p class="palette-intro">Six carefully considered colours drawn from the first days of spring — the moment when winter grey gives way to something tender and alive.</p>
+  <div class="palette-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#B8CDAA;"></div>
+      <div class="swatch-name">New Leaf</div>
+      <div class="swatch-hex">#B8CDAA</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#E8BEB2;"></div>
+      <div class="swatch-name">Petal Blush</div>
+      <div class="swatch-hex">#E8BEB2</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#F0DDA8;"></div>
+      <div class="swatch-name">Morning Butter</div>
+      <div class="swatch-hex">#F0DDA8</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#C4D8E2;"></div>
+      <div class="swatch-name">Rain Sky</div>
+      <div class="swatch-hex">#C4D8E2</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#7A9E6E;"></div>
+      <div class="swatch-name">Garden Path</div>
+      <div class="swatch-hex">#7A9E6E</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#F3EDE0;"></div>
+      <div class="swatch-name">Pale Earth</div>
+      <div class="swatch-hex">#F3EDE0</div>
+    </div>
+  </div>
+  <div class="palette-note">"All six colourways are available to adapt. Whether your brand leans sage and linen or rose and butter — this collection can be recoloured to feel entirely at home in your world."</div>
+</section>
+
+<!-- PATTERNS -->
+<section id="patterns" class="patterns-section">
+  <div class="reveal">
+    <p class="eyebrow">The Designs</p>
+    <h2 class="section-title">Pattern <em>Details</em></h2>
+    <p class="body-text" style="max-width:580px">Each design in this collection exists as a repeating pattern tile, available in multiple colourways. All files are print-ready and supplied at professional resolution.</p>
+  </div>
+  <div class="patterns-grid">
+    <div class="pattern-card">
+      <div class="pattern-image">
+        <img src="https://images.unsplash.com/photo-1490750967868-88df5691cc62?w=600&h=600&fit=crop" alt="Unfurling Fern">
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-type">Tossed Repeat</div>
+        <div class="pattern-name">Unfurling Fern</div>
+        <div class="pattern-desc">Delicate fern fronds mid-unfurl, drawn with a light hand on pale ground. Available in sage, blush, and natural linen colourways.</div>
+      </div>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-image">
+        <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&h=600&fit=crop" alt="Bud & Root">
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-type">Half-Drop Repeat</div>
+        <div class="pattern-name">Bud & Root</div>
+        <div class="pattern-desc">Botanically inspired, the full plant is shown — root, stem, bud — as a gentle reminder that beauty starts underground.</div>
+      </div>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-image">
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=600&fit=crop" alt="Morning Petals">
+      </div>
+      <div class="pattern-info">
+        <div class="pattern-type">Scattered Stripe</div>
+        <div class="pattern-name">Morning Petals</div>
+        <div class="pattern-desc">Loose petals drifting in a soft diagonal — meditative in their repetition, joyful in their colour. A perfect blender or coordinate print.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOCKUPS -->
+<section class="mockups-section">
+  <div class="reveal">
+    <p class="eyebrow">In the Wild</p>
+    <h2 class="section-title">How It <em>Lives</em></h2>
+    <p class="body-text" style="max-width:560px">These patterns were made to be touched, used, loved. Here's how they look when they find their home on real surfaces and products.</p>
+  </div>
+  <div class="mockups-grid">
+    <div class="mockup-item">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=800&fit=crop" alt="Fabric mockup">
+      <div class="mockup-label">Quilting Cotton</div>
+    </div>
+    <div class="mockup-item">
+      <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=400&fit=crop" alt="Stationery mockup">
+      <div class="mockup-label">Notecards</div>
+    </div>
+    <div class="mockup-item">
+      <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=600&h=400&fit=crop" alt="Wrapping paper">
+      <div class="mockup-label">Wrap & Gifting</div>
+    </div>
+    <div class="mockup-item">
+      <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=400&fit=crop" alt="Tote bag">
+      <div class="mockup-label">Canvas Goods</div>
+    </div>
+  </div>
+</section>
+
+<!-- LICENSING CTA -->
+<section id="licensing" class="licensing-cta">
+  <div class="cta-inner">
+    <p class="eyebrow cta-eyebrow" style="justify-content:center">For Licensing Agents & Brands</p>
+    <h2 class="cta-title">Ready to bring this collection<br><em>into your product line?</em></h2>
+    <p class="cta-body">Whether you're looking for exclusive rights, non-exclusive licensing, or a custom colourway adaptation — I'd love to have that conversation. This collection is currently available for fabric, stationery, gifting, and homeware licensing.</p>
+    <div class="cta-buttons">
+      <a href="https://www.spoonflower.com" target="_blank" class="btn-spoonflower">Shop on Spoonflower</a>
+      <a href="mailto:hello@southpawhandmade.com?subject=Licensing Inquiry – When The Garden Wakes" class="btn-license-cta">Inquire About Licensing</a>
+    </div>
+    <p class="cta-note">All patterns supplied as high-resolution repeat tiles. Colourway adaptation and exclusive terms available on request.<br>Response within 2 business days.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo-name">Southpaw Handmade</div>
+      <span class="footer-logo-sub">Surface Pattern Design</span>
+      <p class="footer-tagline">Curious Hands. Creative Heart.<br>Seven collections. Infinite possibilities.</p>
+    </div>
+    <div>
+      <p class="footer-col-label">Find Me Here</p>
+      <div class="social-links">
+        <a href="https://instagram.com" target="_blank" class="social-link">↗ Instagram</a>
+        <a href="https://pinterest.com" target="_blank" class="social-link">↗ Pinterest</a>
+        <a href="https://spoonflower.com" target="_blank" class="social-link">↗ Spoonflower Shop</a>
+      </div>
+    </div>
+    <div>
+      <p class="footer-col-label">Get In Touch</p>
+      <div class="contact-item">
+        <span class="contact-label">Licensing</span>
+        <a href="mailto:hello@southpawhandmade.com" class="contact-value">hello@southpawhandmade.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Custom Work</span>
+        <a href="mailto:studio@southpawhandmade.com" class="contact-value">studio@southpawhandmade.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Southpaw Handmade. All designs original and protected by copyright.</span>
+    <a href="southpaw-lookbook.html" class="footer-back">← Back to All Collections</a>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.pattern-card, .mockup-item, .reveal').forEach(el => observer.observe(el));
+
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+</script>
+</body>
+</html>
